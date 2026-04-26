@@ -27,7 +27,7 @@ function generateSimData(size) {
     return generateData;
 }
 
-const hugeDataSet = generateSimData(50000000);
+const hugeDataSet = generateSimData(500000000);
 
 console.log("Data size: ", hugeDataSet.length);
 
