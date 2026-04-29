@@ -142,3 +142,104 @@ console.log(`Time taken to create library: ${libCreateTimeEnd - libCreateTimeSta
 Time taken to create library: 7.3462 ms
 */
 
+const authorsNewList = [
+  "Alex", "Beth", "Chris", "Dani", "Evan", 
+  "Fiona", "George", "Hanna", "Ian", "Julia"
+];
+
+const titlesNewList = [
+  "Intro to SQL", 
+  "Data Structures in JS", 
+  "Understanding Reduce", 
+  "CSS Grid Tricks", 
+  "Mastering Promises", 
+  "Node.js Streams", 
+  "React State Management", 
+  "Python for Data Science", 
+  "Docker Containerization", 
+  "API Design Patterns"
+];
+
+const libraryId = [
+  "715", "318", "261", "899", "297", "058", "414", "724", "345", "690",
+  "602", "909", "278", "459", "082", "793", "611", "620", "704", "683",
+  "684", "331", "475", "310", "250", "843", "438", "750", "238", "849",
+  "921", "186", "736", "881", "704", "913", "850", "383", "192", "357",
+  "079", "643", "322", "252", "632", "289", "937", "712", "287", "444"
+];
+
+const libCreateTimeStart = performance.now();
+
+const library = libraryId.reduce((books, nId) => {
+    const authIndex = Math.floor(Math.random() * 10);
+    const titleIndex = Math.floor(Math.random() * 10);
+    books.push({
+        id: `p-${nId}`,
+        title: titlesNewList[titleIndex],
+        author: authorsNewList[authIndex]
+    })
+    return books;
+}, []);
+
+console.log(library);
+
+const libCreateTimeEnd = performance.now();
+
+console.log(`Time taken to create library: ${libCreateTimeEnd - libCreateTimeStart} ms`);
+
+// output
+
+/*
+[
+  { id: 'p-715', title: 'Node.js Streams', author: 'Beth' },
+  { id: 'p-318', title: 'Understanding Reduce', author: 'Chris' },
+  { id: 'p-261', title: 'CSS Grid Tricks', author: 'Hanna' },
+  { id: 'p-899', title: 'Intro to SQL', author: 'George' },
+  { id: 'p-297', title: 'Data Structures in JS', author: 'Beth' },
+  { id: 'p-058', title: 'Understanding Reduce', author: 'Hanna' },
+  { id: 'p-414', title: 'Data Structures in JS', author: 'Julia' },
+  { id: 'p-724', title: 'Node.js Streams', author: 'Evan' },
+  { id: 'p-345', title: 'Python for Data Science', author: 'Fiona' },
+  { id: 'p-690', title: 'Node.js Streams', author: 'Ian' },
+  { id: 'p-602', title: 'API Design Patterns', author: 'Evan' },
+  { id: 'p-909', title: 'CSS Grid Tricks', author: 'George' },
+  { id: 'p-278', title: 'Intro to SQL', author: 'Chris' },
+  { id: 'p-459', title: 'CSS Grid Tricks', author: 'Hanna' },
+  { id: 'p-082', title: 'Intro to SQL', author: 'Alex' },
+  { id: 'p-793', title: 'Understanding Reduce', author: 'Fiona' },
+  { id: 'p-611', title: 'Intro to SQL', author: 'Alex' },
+  { id: 'p-620', title: 'Python for Data Science', author: 'Chris' },
+  { id: 'p-704', title: 'Data Structures in JS', author: 'Alex' },
+  { id: 'p-683', title: 'API Design Patterns', author: 'Ian' },
+  { id: 'p-684', title: 'React State Management', author: 'Dani' },
+  { id: 'p-331', title: 'Python for Data Science', author: 'Ian' },
+  { id: 'p-475', title: 'Python for Data Science', author: 'Dani' },
+  { id: 'p-310', title: 'Data Structures in JS', author: 'George' },
+  { id: 'p-250', title: 'Node.js Streams', author: 'Hanna' },
+  { id: 'p-843', title: 'Data Structures in JS', author: 'Julia' },
+  { id: 'p-438', title: 'Understanding Reduce', author: 'George' },
+  { id: 'p-750', title: 'Mastering Promises', author: 'Julia' },
+  { id: 'p-238', title: 'Node.js Streams', author: 'Beth' },
+  { id: 'p-849', title: 'Mastering Promises', author: 'Ian' },
+  { id: 'p-921', title: 'Node.js Streams', author: 'Ian' },
+  { id: 'p-186', title: 'CSS Grid Tricks', author: 'Chris' },
+  { id: 'p-736', title: 'React State Management', author: 'Dani' },
+  { id: 'p-881', title: 'Understanding Reduce', author: 'Julia' },
+  { id: 'p-704', title: 'Understanding Reduce', author: 'Beth' },
+  { id: 'p-913', title: 'Python for Data Science', author: 'Dani' },
+  { id: 'p-850', title: 'Data Structures in JS', author: 'Fiona' },
+  { id: 'p-383', title: 'React State Management', author: 'Ian' },
+  { id: 'p-192', title: 'Docker Containerization', author: 'Chris' },
+  { id: 'p-357', title: 'Understanding Reduce', author: 'Julia' },
+  { id: 'p-079', title: 'Node.js Streams', author: 'Hanna' },
+  { id: 'p-643', title: 'Node.js Streams', author: 'Fiona' },
+  { id: 'p-322', title: 'Data Structures in JS', author: 'Beth' },
+  { id: 'p-252', title: 'Node.js Streams', author: 'Chris' },
+  { id: 'p-632', title: 'Node.js Streams', author: 'Beth' },
+  { id: 'p-289', title: 'Mastering Promises', author: 'George' },
+  { id: 'p-937', title: 'Python for Data Science', author: 'Alex' },
+  { id: 'p-712', title: 'Node.js Streams', author: 'Hanna' },
+  { id: 'p-287', title: 'Mastering Promises', author: 'Chris' },
+  { id: 'p-444', title: 'API Design Patterns', author: 'Fiona' }
+]
+*/
