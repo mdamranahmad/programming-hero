@@ -1,0 +1,3 @@
+// Generic with Type Interface
+
+

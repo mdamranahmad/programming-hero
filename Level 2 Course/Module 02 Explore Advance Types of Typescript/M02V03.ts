@@ -70,3 +70,15 @@ const userList0 : GenericInObject<{name: string; age: number}> =[{
     name: 'Mr Y',
     age: 32,
 }];
+
+// alternative for line 65-72
+type User = {name: string; age: number};
+
+const userList1 : GenericInObject<User> = [{
+    name: 'Mr x',
+    age: 22,
+},
+{
+    name: 'Mr Y',
+    age: 32,
+}];
