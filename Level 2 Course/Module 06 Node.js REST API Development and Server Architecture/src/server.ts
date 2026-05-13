@@ -1,27 +1,12 @@
 import { createServer, IncomingMessage, OutgoingMessage, Server, ServerResponse } from "http";
-
+import { routeHandler } from "./routes/route";
 
 // a server is created that will receive two param, type is defined as Server
 // every type we are defining here coming from node_module
 const server : Server = createServer((req : IncomingMessage, res: ServerResponse) => {
     // console.log(req.url);
     // console.log(req.method);
-    const url = req.url;
-    const method = req.method;
-
-    // url === '/' && method === 'GET' ? 
-    //     res.writeHead(200, {'Content-Type' : 'text/plain',}).
-    //         end('Welcome to the server!!') : 
-    //             res.writeHead(404, {'Content-Type' : 'text/plain',}).
-    //                 end('404!! ERROR!!!') ;
-    url === '/' && method === 'GET' ? 
-        res.writeHead(200, {'Content-Type' : 'application/json',}).
-            end(JSON.stringify({message : 'Welcome to the server!!'})) : 
-                url?.startsWith('/products') ?
-                    res.writeHead(200, {'Content-Type' : 'application/json',}).
-                        end(JSON.stringify({message : 'This is product landing page.'})) :
-                            res.writeHead(404, {'Content-Type' : 'application/json',}).
-                                end(JSON.stringify({message: 'ERROR!!! 404'})) ;
+    routeHandler(req, res);
 });
 
 //  server needs to listen, a port number can be declared, followed by a listeningListener
@@ -58,3 +43,5 @@ GET
 // what if we want to see these on browser rather than on console
 
 // Ln 7-8 is commented
+
+// M06V03 - Better file organization
