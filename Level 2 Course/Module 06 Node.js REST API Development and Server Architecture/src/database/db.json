@@ -1,16 +1,73 @@
 [
-        {
-        "id": "001",
-        "name": "Product 1",
-        "description": "Description 1",
-        "type": "Type 1",
-        "price": "Price 1"
-        },
-        {
-        "id": "002",
-        "name": "Product 2",
-        "description": "Description 2",
-        "type": "Type 2",
-        "price": "Price 2"
-        }
-    ]
+  {
+    "id": "1",
+    "name": "Sony WH-1000XM5",
+    "description": "Premium wireless noise-canceling headphones featuring industry-leading audio clarity, exceptional comfort, and up to 30 hours of battery life.",
+    "type": "Electronics",
+    "price": "$398.00"
+  },
+  {
+    "id": "2",
+    "name": "Apple MacBook Air M3",
+    "description": "Ultra-thin and lightweight laptop powered by the Apple M3 chip, featuring a 13.6-inch Liquid Retina display and silent, fanless cooling.",
+    "type": "Electronics",
+    "price": "$1099.00"
+  },
+  {
+    "id": "3",
+    "name": "Kindle Paperwhite",
+    "description": "6.8-inch waterproof e-reader with an adjustable warm light, glare-free display that reads like real paper, and weeks of battery life.",
+    "type": "Electronics",
+    "price": "$149.99"
+  },
+  {
+    "id": "4",
+    "name": "Logitech MX Master 3S",
+    "description": "Ergonomic wireless performance mouse equipped with an 8K DPI track-anywhere sensor and ultra-quiet clicks.",
+    "type": "Office Supplies",
+    "price": "$99.99"
+  },
+  {
+    "id": "5",
+    "name": "Hydro Flask 32 oz",
+    "description": "Wide-mouth stainless steel insulated water bottle designed to keep beverages ice-cold for up to 24 hours or piping hot for 12 hours.",
+    "type": "Home & Kitchen",
+    "price": "$44.95"
+  },
+  {
+    "id": "6",
+    "name": "Instant Pot Duo Plus",
+    "description": "9-in-1 electric pressure cooker, slow cooker, rice cooker, steamer, sauté pan, yogurt maker, and sterilizer.",
+    "type": "Home & Kitchen",
+    "price": "$129.95"
+  },
+  {
+    "id": "7",
+    "name": "Nike Air Max 270",
+    "description": "Comfortable lifestyle sneakers featuring a prominent Max Air unit for lightweight cushioning and a sleek, modern aesthetic.",
+    "type": "Apparel",
+    "price": "$160.00"
+  },
+  {
+    "id": "8",
+    "name": "The Lean Startup by Eric Ries",
+    "description": "A popular business book offering a systematic approach for companies to manage and pivot effectively through continuous innovation.",
+    "type": "Books",
+    "price": "$16.99"
+  },
+  {
+    "id": "9",
+    "name": "Anker 511 Charger (Nano Pro)",
+    "description": "Compact 20W USB-C fast charging block engineered for smartphones and tablets, built with advanced temperature control.",
+    "type": "Electronics",
+    "price": "$13.99"
+  },
+  {
+    "id": "10",
+    "name": "Aeropress Clear Coffee Maker",
+    "description": "An iconic, durable coffee brewer utilizing 3-in-1 brew technology to deliver smooth, grit-free espresso-style coffee in under a minute.",
+    "type": "Home & Kitchen",
+    "price": "$49.95"
+  }
+]
+
