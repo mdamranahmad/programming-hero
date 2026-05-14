@@ -68,6 +68,19 @@
     "description": "An iconic, durable coffee brewer utilizing 3-in-1 brew technology to deliver smooth, grit-free espresso-style coffee in under a minute.",
     "type": "Home & Kitchen",
     "price": "$49.95"
+  },
+  {
+    "id": "1778784267556",
+    "name": "Test Item 01",
+    "description": "This is a test item created using POST method",
+    "type": "Any",
+    "price": "Not Defined"
+  },
+  {
+    "id": "1778784305023",
+    "name": "Test Item 02",
+    "description": "This is a test item created using POST method",
+    "type": "Any",
+    "price": "Not Defined"
   }
 ]
-

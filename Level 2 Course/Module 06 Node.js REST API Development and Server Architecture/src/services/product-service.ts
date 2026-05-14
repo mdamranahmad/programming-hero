@@ -17,6 +17,10 @@ export const readProduct = () => {
     return JSON.parse(products);
 };
 
+export const insertProduct =(payload : any) => {
+    fs.writeFileSync(filePath, JSON.stringify(payload));
+};
+
 /*
 The process.cwd() method returns the current working directory of the Node.js process.
 */
