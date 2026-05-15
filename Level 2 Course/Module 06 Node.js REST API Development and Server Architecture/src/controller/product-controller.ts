@@ -3,6 +3,7 @@ import { insertProduct, readProduct } from "../services/product-service";
 import type { IProduct } from "../types/product-types";
 import { json } from "node:stream/consumers";
 import { parseBody } from "../utility/parse-body";
+import { sendResponse } from "../utility/send-response";
 
 export const productController = async (
   req: IncomingMessage,
@@ -41,28 +42,24 @@ export const productController = async (
   //                 })) ;
   // experimeting with GET Method
   if (method === "GET") {
-    // if the inquary is about products, return all the products
-    productId === "products"
-      ? res.writeHead(200, { "content-type": "application/json" }).end(
-          JSON.stringify({
-            message: "This is product landing page",
-            data: products,
-          }),
-        )
-      : product
-        ? // if the inquary is about a specific product, retruns that product
-          res.writeHead(200, { "content-type": "application/json" }).end(
-            JSON.stringify({
-              message: `Product ${productId} is retrived!`,
-              data: product,
-            }),
-          )
-        : // return ERROR for invalid quary
-          res.writeHead(200, { "content-type": "application/json" }).end(
-            JSON.stringify({
-              message: "ERROR 404!! Not Found!!!",
-            }),
-          );
+    try {
+      // if the inquary is about products, return all the products
+      productId === "products"
+        ? sendResponse(res, 200, true, "This is product landing page", products)
+        : product
+          ? // if the inquary is about a specific product, retruns that product
+            sendResponse(
+              res,
+              200,
+              true,
+              `Product ${productId} is retrived!`,
+              product,
+            )
+          : // return ERROR for invalid quary
+            sendResponse(res, 404, false, "ERROR 404!! Not Found!!!");
+    } catch (error) {
+      return sendResponse(res, 500, false, "Somethind Went Wrong!!!");
+    }
     // experimenting with POST Method
   } else if (method === "POST") {
     // when a product is to be added to the database while is product page
@@ -84,13 +81,14 @@ export const productController = async (
       insertProduct(products);
       // console.log(products);
       // a visual message to confirm the product creation
-      res.writeHead(200, { "content-type": "application/json" }).end(
-        JSON.stringify({
-          message: `Product created succesfully!`,
-          data: newProduct,
-        }),
+      return sendResponse(
+        res,
+        200,
+        true,
+        `Product created succesfully!`,
+        newProduct,
       );
-    }
+    } else sendResponse(res, 404, false, "Wrong Entry!!");
     // experiment with PUT Method, to update a specific product
   } else if (method === "PUT" && productId !== null) {
     // construct a product by combining the individual chunks
@@ -99,43 +97,29 @@ export const productController = async (
     // returns index of the requested product url
     const index = products.findIndex((p: IProduct) => p.id === productId);
     // console.log("Index: ", index);
-    if (index < 0) {
-      res.writeHead(404, { "content-type": "application/json" }).end(
-        JSON.stringify({
-          message: "Product not found!!",
-          data: null,
-        }),
-      );
-    }
-
-    // console.log(products[index]);
-    // console.log(productId);
-    products[index] = { id: productId, ...body };
-    insertProduct(products);
-    res.writeHead(200, { "content-type": "application/json" }).end(
-      JSON.stringify({
-        message: `Product ${productId} is updated successfully`,
-        data: products[index],
-      }),
-    );
+    index < 0
+      ? sendResponse(res, 404, false, "Product not found!!")
+      : ((products[index] = { id: productId, ...body }),
+        insertProduct(products),
+        sendResponse(
+          res,
+          200,
+          true,
+          `Product ${productId} is updated successfully`,
+          products[index],
+        ));
   } else if (method === "DELETE" && productId !== null) {
     const index = products.findIndex((p: IProduct) => p.id === productId);
-    if (index < 0) {
-      res.writeHead(404, { "content-type": "application/json" }).end(
-        JSON.stringify({
-          message: "Product not found!!",
-          data: null,
-        }),
-      );
-    }
-
-    products.splice(index, 1);
-    insertProduct(products);
-    res.writeHead(200, { "content-type": "application/json" }).end(
-      JSON.stringify({
-        message: `Product ${productId} is deleted successfully.`,
-        data: null,
-      }),
-    );
+    index < 0
+      ? sendResponse(res, 404, false, "Product not found!!", null)
+      : (products.splice(index, 1),
+        insertProduct(products),
+        sendResponse(
+          res,
+          200,
+          true,
+          `Product ${productId} is deleted successfully.`,
+          null,
+        ));
   }
 };

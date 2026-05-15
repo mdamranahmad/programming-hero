@@ -75,5 +75,12 @@
     "description": "Test Item 02 is updated",
     "type": "Any",
     "price": "Not Defined"
+  },
+  {
+    "id": "1778857121166",
+    "name": "Test Item 01",
+    "description": "Test Item 01 is created",
+    "type": "Any",
+    "price": "Not Defined"
   }
 ]
