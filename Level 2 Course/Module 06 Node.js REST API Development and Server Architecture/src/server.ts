@@ -1,17 +1,26 @@
-import { createServer, IncomingMessage, OutgoingMessage, Server, ServerResponse } from "http";
+import {
+  createServer,
+  IncomingMessage,
+  OutgoingMessage,
+  Server,
+  ServerResponse,
+} from "http";
 import { routeHandler } from "./routes/route";
+import config from "./config";
 
 // a server is created that will receive two param, type is defined as Server
 // every type we are defining here coming from node_module
-const server : Server = createServer((req : IncomingMessage, res: ServerResponse) => {
+const server: Server = createServer(
+  (req: IncomingMessage, res: ServerResponse) => {
     // console.log(req.url);
     // console.log(req.method);
     routeHandler(req, res);
-});
+  },
+);
 
 //  server needs to listen, a port number can be declared, followed by a listeningListener
-server.listen(5000, () => {
-    console.log("Server is running on the port 5000");
+server.listen(config.port, () => {
+  console.log(`Server is running on the port ${config.port}`);
 });
 
 // we need to run our server
@@ -32,13 +41,12 @@ server.listen(5000, () => {
 
 // we can now try to see the methods on url from 'console.log(req)' to "console.log(req.method)" and "console.log(req.method)"
 
-// output 
+// output
 /*
 Server is running on the port 5000
 /
 GET
 */
-
 
 // what if we want to see these on browser rather than on console
 

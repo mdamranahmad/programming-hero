@@ -16,6 +16,7 @@
   },
   "type": "module",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "tsx": "^4.21.0"
   }
 }
