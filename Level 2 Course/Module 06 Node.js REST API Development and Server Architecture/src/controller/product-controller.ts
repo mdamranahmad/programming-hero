@@ -118,5 +118,24 @@ export const productController = async (
         data: products[index],
       }),
     );
+  } else if (method === "DELETE" && productId !== null) {
+    const index = products.findIndex((p: IProduct) => p.id === productId);
+    if (index < 0) {
+      res.writeHead(404, { "content-type": "application/json" }).end(
+        JSON.stringify({
+          message: "Product not found!!",
+          data: null,
+        }),
+      );
+    }
+
+    products.splice(index, 1);
+    insertProduct(products);
+    res.writeHead(200, { "content-type": "application/json" }).end(
+      JSON.stringify({
+        message: `Product ${productId} is deleted successfully.`,
+        data: null,
+      }),
+    );
   }
 };
