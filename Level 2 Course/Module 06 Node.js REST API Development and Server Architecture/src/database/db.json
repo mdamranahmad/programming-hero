@@ -71,15 +71,15 @@
   },
   {
     "id": "1778784267556",
-    "name": "Test Item 01",
-    "description": "This is a test item created using POST method",
+    "name": "Test Item 04",
+    "description": "Test Item 1 is updated for test",
     "type": "Any",
-    "price": "Not Defined"
+    "price": "100"
   },
   {
     "id": "1778784305023",
-    "name": "Test Item 02",
-    "description": "This is a test item created using POST method",
+    "name": "Test Item 03",
+    "description": "Test Item 02 is updated",
     "type": "Any",
     "price": "Not Defined"
   }
