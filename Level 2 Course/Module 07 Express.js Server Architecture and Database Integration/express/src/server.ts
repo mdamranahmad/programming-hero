@@ -1,0 +1,47 @@
+import express, {
+  type Application,
+  type Request,
+  type Response,
+} from "express";
+import { Pool } from "pg";
+
+const app: Application = express();
+const port = 5000;
+
+app.use(express.json()); //  express middleware, have use before request, it receives the data from client found inside req.body, returns it as json string
+//  acts as a body parser
+app.use(express.text());
+app.use(express.urlencoded()); //  doesn't recognize the nested data
+app.use(express.urlencoded({ extended: true })); //  reconigze the nested  data too
+
+const pool = new Pool({
+  connectionString:
+    "postgresql://neondb_owner:npg_sf9kMogAuV1z@ep-falling-unit-apl3xv0q-pooler.c-7.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
+});
+
+app.get("/", (req: Request, res: Response) => {
+  //   res.send("Hello World!");
+  //   res.send(req);
+  res.status(200).json({
+    message: "Express Server!!",
+  });
+});
+
+app.post("/", async (req: Request, res: Response) => {
+  //   console.log(req.body);
+  //   const body = req.body; // the body of the request is assigned a variable
+
+  // destructuring to hide important informations
+  const { name, email } = req.body; // the body of the request is assigned a variable
+  res.status(200).json({
+    message: "Created",
+    data: {
+      name,
+      email,
+    },
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
