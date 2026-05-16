@@ -4,9 +4,11 @@ import express, {
   type Response,
 } from "express";
 import { Pool } from "pg";
+import config from "./config";
 
 const app: Application = express();
-const port = 5000;
+const port = config.port;
+// const port = 5000;
 
 app.use(express.json()); //  express middleware, have use before request, it receives the data from client found inside req.body, returns it as json string
 //  acts as a body parser
@@ -15,8 +17,7 @@ app.use(express.urlencoded()); //  doesn't recognize the nested data
 app.use(express.urlencoded({ extended: true })); //  reconigze the nested  data too
 
 const pool = new Pool({
-  connectionString:
-    "postgresql://neondb_owner:npg_sf9kMogAuV1z@ep-falling-unit-apl3xv0q-pooler.c-7.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
+  connectionString: config.connection_string,
 });
 
 const initDB = async () => {
@@ -46,6 +47,7 @@ initDB();
 app.get("/", (req: Request, res: Response) => {
   //   res.send("Hello World!");
   //   res.send(req);
+  console.log(req.body);
   res.status(200).json({
     success: true,
     message: "Express Server!!",
